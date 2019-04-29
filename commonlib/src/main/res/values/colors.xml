@@ -11,9 +11,9 @@
     <color name="page_black_cc">#b01a1a1a</color><!--灰色cc -->
     <color name="menu_item_text_color">#FFFF4081</color>
 
-
-
-
+    <color name="theme_bg_color">#f2f2f2</color>
+    <color name="toggle_color_slelected">#1aa98d</color>
+    <color name="light_gray">#bfbfbf</color>
     <color name="colorPrimary">#0260aa</color>
     <color name="colorPrimaryDark">#0260aa</color>
     <color name="colorAccent">#0196da</color>

@@ -85,6 +85,11 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/color_696969</item>
     </style>
+    <style name="LineItemStyleE0E0E0">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/color_e0e0e0</item>
+    </style>
 
     <!--中号字体-->
     <style name="Font_Middle_Blue">
@@ -93,7 +98,10 @@
     </style>
 
 
-
+    <style name="Font15Style666666" parent="ww">
+        <item name="android:textColor">@color/color_666666</item>
+        <item name="android:textSize">@dimen/text_font_15</item>
+    </style>
 
 
 
