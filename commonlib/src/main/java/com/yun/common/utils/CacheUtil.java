@@ -26,6 +26,8 @@ public class CacheUtil {
         return getFormatSize(cacheSize);
     }
 
+    
+
     /***
      * 清理所有缓存
      * @param context
