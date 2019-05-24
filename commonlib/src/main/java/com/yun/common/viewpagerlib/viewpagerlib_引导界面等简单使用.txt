@@ -1,0 +1,131 @@
+ *  *版本更新使用注意
+ 
+ *  *
+ *  * 三个地方更改包名
+ *  * 清单文件FileProvider---------------FileProvider
+ *  * 清单文件的 FileProvider和UriUtil
+ *  *  uri = FileProvider.getUriForFile(context.getApplicationContext(), "com.company.yun.fileProvider", file);
+ *  *
+ *  *  的FileProvider必须一样
+ *  * UpdateIntentService----ACTION_UPDATE   字段
+ *  *UriUtil-----getUriForFile   方法里面
+ 
+ 
+ 
+ 
+ 使用方法
+ 
+ 第一步：
+	清单文件里面注册
+	   <!--版本更新的service 和provider-->
+        <service
+            android:name="com.yun.common.utils.updateutils.UpdateIntentService"
+            android:exported="false" />
+
+        <!--android:authorities="com.company.yun.fileProvider"-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.company.yun.fileProvider"      //这个fileProvider必须和service和UriUtil 一样 不然空指针
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+ 第二步：
+	创建xml文件夹
+	
+	filepath
+			<?xml version="1.0" encoding="utf-8"?>
+		<paths>
+			<external-path name="external_path" path="."/>
+			<cache-path name="cache_path" path="."/>
+		</paths>
+		
+	provider_paths
+		 <?xml version="1.0" encoding="utf-8"?>
+		<paths xmlns:android="http://schemas.android.com/apk/res/android">
+
+			<external-path name="external_path" path="."/>
+			<cache-path name="cache_path" path="."/>
+
+		</paths>
+
+ 第三步：
+ 相关权限的添加?
+		直接                beforeUpdateWork();
+
+					private void beforeUpdateWork() {
+						if (!isEnableNotification()) {
+							showNotificationAsk();
+							return;
+						}
+						toIntentServiceUpdate();
+
+					}
+
+
+				 private void showNotificationAsk() {
+						AlertDialog.Builder dialog =
+								new AlertDialog.Builder(this);
+						dialog.setTitle("通知权限");
+						dialog.setMessage("打开通知权限");
+						dialog.setPositiveButton("确定",
+								new DialogInterface.OnClickListener() {
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										toSetting();
+									}
+								});
+						dialog.setNeutralButton("跳过", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								toIntentServiceUpdate();
+							}
+						});
+						dialog.setNegativeButton("关闭",
+								new DialogInterface.OnClickListener() {
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										//...To-do
+									}
+								});
+						dialog.show();
+					}
+
+					private boolean isEnableNotification() {
+						boolean ret = true;
+						try {
+							NotificationManagerCompat manager = NotificationManagerCompat.from(this);
+							ret = manager.areNotificationsEnabled();
+						} catch (Exception e) {
+							return true;
+						}
+						return ret;
+					}
+
+
+    private void toIntentServiceUpdate() {
+        Intent updateIntent = new Intent(this, UpdateIntentService.class);
+        updateIntent.setAction(UpdateIntentService.ACTION_UPDATE);
+        updateIntent.putExtra("appName", appName + version_code);  //version_code 版本号
+        //随便一个apk的url进行模拟
+        updateIntent.putExtra("downUrl", downUrl);//downUrl下载的url
+        this.startService(updateIntent);
+    }
+
+    private void toSetting() {
+        try {
+            Intent localIntent = new Intent();
+            localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+            localIntent.setData(Uri.fromParts("package", this.getPackageName(), null));
+            startActivity(localIntent);
+        } catch (Exception e) {
+
+        }
+    }
+
+
+到此ok
