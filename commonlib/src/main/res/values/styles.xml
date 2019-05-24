@@ -10,7 +10,11 @@
 
 
     //pop  的style
-
+    <!--font style end -->
+    <style name="ww">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
     <!--横线-->
     <style name="LineStyleE5E5E5">popup_anim_style_bootom_right
         <!--<item name="android:layout_marginTop">@dimen/padding_1</item>-->
