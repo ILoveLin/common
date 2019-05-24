@@ -19,6 +19,26 @@ import com.yun.common.utils.popupwindow.PopupWindowTwoButton;
 
 /**
  * Created by zhy on 15/8/27.
+ *
+ * 自己封装一个BaseActivity---  里面有显示不同种状态的方法  -----这个github里面有抽取base-----https://github.com/ILoveLin/UIFrameTow
+ * 子类调用        setPageStateView();即可
+ *
+ *
+ *         //页面状态管理库 文档查看 https://github.com/hss01248/PageStateManager
+ *         //这里不再初始化pageManager ，在需要添加pagerManager的页面手动调用 setPageStateView或者setCustomPageStateView
+ *         //这样可以减少不需要loading或者error的页面添加，减少页面嵌套层级
+ * //        PageManager.initInApp(getActivity().getApplicationContext());
+ * //        mPageManager = PageManager.init(mContentView, false, new Runnable() {
+ * //            @Override
+ * //            public void run() {
+ * //                onClickRetry();
+ * //            }
+ * //        });
+ *
+ *
+ *
+ *
+ *
  */
 public class PageManager {
     public static final int NO_LAYOUT_ID = 0;

@@ -1,0 +1,26 @@
+PopupWindowTwoButton使用案例
+
+  
+        final PopupWindowTwoButton twoButton = new PopupWindowTwoButton((Activity) getActivity());
+        twoButton.getTv_content().setText("您确定退出吗？");
+        twoButton.getTv_ok().setText("确定");
+        twoButton.getTv_cancel().setText("取消");
+        twoButton.getTv_ok().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharePreferenceUtil.put(getActivity(), Constants.Is_Logined, false);
+                SharePreferenceUtil.put(getActivity(), Constants.Token, "");
+                SharePreferenceUtil.put(getActivity(), Constants.Device, "");
+                SharePreferenceUtil.put(getActivity(), Constants.UserName, "");
+                showToast("退出成功");
+                openActivity(LoginActivity.class);
+                twoButton.dismiss();
+            }
+        });
+        twoButton.getTv_cancel().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                twoButton.dismiss();
+            }
+        });
+        twoButton.showPopupWindow(linear_04, Gravity.CENTER);
