@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
-      <module fileurl="file://$PROJECT_DIR$/common.iml" filepath="$PROJECT_DIR$/common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/commonlib/commonlib.iml" filepath="$PROJECT_DIR$/commonlib/commonlib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dialog/dialog.iml" filepath="$PROJECT_DIR$/dialog/dialog.iml" />
-      <module fileurl="file://$PROJECT_DIR$/widget/widget.iml" filepath="$PROJECT_DIR$/widget/widget.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common.iml" filepath="$PROJECT_DIR$/.idea/modules/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/common.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/common.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/base/common.base.iml" filepath="$PROJECT_DIR$/.idea/modules/base/common.base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/commonlib/common.commonlib.iml" filepath="$PROJECT_DIR$/.idea/modules/commonlib/common.commonlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dialog/common.dialog.iml" filepath="$PROJECT_DIR$/.idea/modules/dialog/common.dialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/widget/common.widget.iml" filepath="$PROJECT_DIR$/.idea/modules/widget/common.widget.iml" />
     </modules>
   </component>
 </project>
